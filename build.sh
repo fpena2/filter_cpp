@@ -1,1 +1,1 @@
-rm -rf build && mkdir build && cmake -S . -B build && make -C build && ctest --test-dir build
+rm -rf build && mkdir build && cmake -S . -B build && make -C build && ctest --test-dir build --rerun-failed --output-on-failure

@@ -13,13 +13,30 @@ class iterator
 public:
     iterator(std::vector<int>::iterator iter, std::vector<int>::iterator end,
              const std::function<bool(int)> &condition)
-        : curr_iter(iter), end(end), filter_func(condition) {}
+        : curr_iter(iter), end(end), filter_func(condition)
+    {
+        // Move curr_iter to a valid value
+        while (curr_iter != end && !filter_func(*curr_iter))
+        {
+            curr_iter++;
+        }
+    }
 
-    int operator*() const { return *curr_iter; }
+    int operator*() const
+    {
+        return *curr_iter;
+    }
+
+    bool operator==(const iterator &other) const
+    {
+        return curr_iter == other.curr_iter;
+        // && end == other.end
+        // && filter_func.target_type() == other.filter_func.target_type();
+    }
 
     bool operator!=(const iterator &other) const
     {
-        return curr_iter != other.curr_iter;
+        return !(*this == other);
     }
 
     iterator &operator++()
