@@ -15,7 +15,7 @@ TEST(FilterTest, BeginSkipsUnmatchedElements)
     filter f(vec, isEven);
     auto it = f.begin();
 
-    EXPECT_EQ(*it, 6); // First even number
+    EXPECT_EQ(*it, 6);
 }
 
 TEST(FilterTest, EndPointsToEnd)
@@ -57,5 +57,5 @@ TEST(FilterTest, HandlesEmptyVector)
     auto it = f.begin();
     auto end = f.end();
 
-    EXPECT_EQ(it, end); // No elements to iterate
+    EXPECT_EQ(it, end);
 }

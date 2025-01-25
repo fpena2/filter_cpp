@@ -15,7 +15,7 @@ public:
              const std::function<bool(int)> &condition)
         : curr_iter(iter), end(end), filter_func(condition)
     {
-        // Move curr_iter to a valid value
+        // Move curr_iter to a valid first value
         while (curr_iter != end && !filter_func(*curr_iter))
         {
             curr_iter++;
@@ -30,6 +30,8 @@ public:
     bool operator==(const iterator &other) const
     {
         return curr_iter == other.curr_iter;
+
+        // TODO: check for the entire range?
         // && end == other.end
         // && filter_func.target_type() == other.filter_func.target_type();
     }

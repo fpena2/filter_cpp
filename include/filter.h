@@ -10,16 +10,16 @@
 class filter
 {
 private:
-    std::vector<int> v;
+    std::vector<int> vec;
     std::function<bool(int)> filter_func;
 
 public:
     filter(const std::vector<int> &v, const std::function<bool(int)> &func)
-        : v(v), filter_func(func) {}
+        : vec(v), filter_func(func) {}
 
     iterator begin()
     {
-        iterator iter(v.begin(), v.end(), filter_func);
+        iterator iter(vec.begin(), vec.end(), filter_func);
         while (iter != end() && !filter_func(*iter))
         {
             ++iter;
@@ -27,5 +27,5 @@ public:
         return iter;
     }
 
-    iterator end() { return iterator(v.end(), v.end(), filter_func); }
+    iterator end() { return iterator(vec.end(), vec.end(), filter_func); }
 };
